@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+</head>
+<body>
+  <h2>Todo List</h2>
+  
+  <input class="js-name-input" placeholder="Todo Name">
+  <button onclick="addTodo()">Add</button>
+
+  <ul id="todo-container"></ul>
+
+  <script>
+    const todoList = ['Make dinner', 'Watch YouTube'];
+
+    // Function to display todos
+    function renderTodos() {
+      const listElement = document.getElementById('todo-container');
+      listElement.innerHTML = ''; // Clear old list
+
+      for (let i = 0; i < todoList.length; i++) {
+        const li = document.createElement('li');
+        li.textContent = todoList[i];
+        listElement.appendChild(li);
+      }
+    }
+
+    // Function to add a new todo
+    function addTodo() {
+      const inputElement = document.querySelector('.js-name-input');
+      const todoName = inputElement.value.trim();
+
+      if (todoName) {
+        todoList.push(todoName);
+        inputElement.value = '';
+        renderTodos();
+      }
+    }
+
+    // Initial render
+    renderTodos();
+  </script>
+</body>
+</html>
