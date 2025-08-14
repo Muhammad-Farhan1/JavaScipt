@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Object Model</title>
+  <style>
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <p>YouTube Subscribe Button</p>
+  <button class="js-subscribe-button">Subscribe</button>
+
+  <script>
+    const btnEl = document.querySelector('.js-subscribe-button');
+
+    const states = ["Subscribe", "Subscribed", "Unsubscribed"];
+
+    btnEl.addEventListener("click", () => {
+      let currentIndex = states.indexOf(btnEl.textContent);
+      btnEl.textContent = states[(currentIndex + 1) % states.length];
+    });
+  </script>
+</body>
+</html>
