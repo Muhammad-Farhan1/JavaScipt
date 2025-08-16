@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling Example</title>
+</head>
+<body>
+    <script>
+        try {
+            let a = prompt("Enter your first number: ");
+            let b = prompt("Enter your second number: ");
+
+            if (isNaN(a) || isNaN(b)) {
+                throw new Error("Invalid input. Please enter numbers only.");
+            }
+
+            let sum = parseInt(a) + parseInt(b);
+            document.write("The sum is: " + sum + "<br>");
+        } 
+        catch (error) {
+            document.write("Error: " + error.message + "<br>");
+        } 
+        finally {
+            document.write("This block always runs.");
+        }
+    </script>
+</body>
+</html>
