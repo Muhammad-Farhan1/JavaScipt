@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener Example</title>
+    <style>
+        /* Basic styling for box */
+        .container {
+            padding: 20px;
+        }
+        .box {
+            padding: 15px;
+            border: 2px solid black;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        #btn {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Text box -->
+        <div class="box">Hey, I am a box</div>
+
+        <!-- Button to trigger event -->
+        <button id="btn">Change Content</button>
+    </div>
+
+    <script>
+        // Get the button element
+        let button = document.getElementById("btn");
+
+        // Add a click event listener to the button
+        button.addEventListener("click", () => {
+            // Change the content of the box when button is clicked
+            document.querySelector(".box").innerHTML = "<b>Now you have been changed!</b>";
+        });
+    </script>
+</body>
+</html>
