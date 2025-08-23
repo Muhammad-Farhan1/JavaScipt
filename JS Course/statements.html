@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statements Example</title>
+</head>
+<body>
+   <script>
+    // Example 1: Simple if-else statement
+    const x = 40;
+
+    if (x > 45) {
+        document.write("x is greater than 45<br>");
+    } else if (x === 45) { // strict equality check (===)
+        document.write("x is equal to 45<br>");
+    } else {
+        document.write("x is less than 45<br>");
+    }
+
+    // Example 2: Checking eligibility to drive
+    const age = 18;
+
+    if (age > 212) { 
+        // unrealistic condition, just for example
+        console.log("You cannot drive (invalid age)."); 
+    } else if (age >= 16) {
+        console.log("You can drive.");
+    } else {
+        console.log("Please wait until you are old enough to drive.");
+    }
+
+    // Example 3: Function with default parameters
+    function calculateTax(taxPercent = 40) {
+        // Just adding 3 to the given taxPercent for demonstration
+        console.log("Calculated tax: " + (taxPercent + 3));
+    }
+
+    // Function calls
+    calculateTax(2000); // Custom tax value
+    calculateTax();     // Uses default parameter (40)
+
+   </script>
+</body>
+</html>
