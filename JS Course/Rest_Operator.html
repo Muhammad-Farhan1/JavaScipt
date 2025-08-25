@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Operators Example</title>
+</head>
+<body>
+    <script>
+        // ---------- Example 1: Using Rest Operator with Addition ----------
+        // "differ" function takes a name and any number of values (...args)
+        // It adds up all the numbers passed after "name".
+        function differ(name, ...args) {
+            let sum = 0;
+
+            // Loop through all arguments in args array
+            for (let i of args) {
+                sum += i;
+            }
+
+            // Output the result
+            document.write(`Hello ${name}, your total sum is: ${sum}<br>`);
+        }
+
+        // Function calls
+        differ("John_peter", 18, 40, 50);  // Adds 18 + 40 + 50
+        differ("Shelley", 2, 50);          // Adds 2 + 50
+
+
+        // ---------- Example 2: Using Rest Operator with Multiplication ----------
+        // "multiply" function takes a name, age, and then multiple marks (...args)
+        // It multiplies all the marks together.
+        function multiply(name, age, ...args) {
+            let product = 1;
+
+            // Multiply all numbers in args
+            for (let i of args) {
+                product *= i;
+            }
+
+            // Output the result
+            document.write(`His name is ${name}, age is ${age}, and multiplied marks are: ${product}`);
+        }
+
+        // Function call
+        multiply("Format", 20, 5, 5, 5);  // Multiplies 5 * 5 * 5
+    </script>
+</body>
+</html>
