@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Open and Close Example</title>
+</head>
+<body>
+  <!-- Buttons to open and close a new browser window -->
+  <button onclick="newWindow()">Open Window</button>
+  <button onclick="closeWindow()">Close Window</button>
+
+  <script>
+    /*
+      Example: Opening and closing a new browser window using JavaScript.
+      - window.open() opens a new tab or window.
+      - window.close() closes the window reference stored.
+    */
+
+    // Variable to store the new window reference
+    let myWindow;
+
+    // Function to open a new window
+    function newWindow() {
+      // Open YouTube in a new window with custom size
+      myWindow = window.open("https://www.youtube.com", "_blank", "width=500,height=800");
+    }
+
+    // Function to close the opened window
+    function closeWindow() {
+      if (myWindow) {
+        myWindow.close(); // Close only if it exists
+      }
+    }
+  </script>
+</body>
+</html>
