@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Objects & JSON</title>
+  <script>
+    // -------------------------------
+    // Example 1: Simple Object
+    // -------------------------------
+    const introJohn = {
+      name: "John",
+      fullName: "John Smith",
+      age: 17,
+      city: "Malaysia",
+      country: "Pakistan"
+    };
+
+    console.log("Country:", introJohn.country);  // Access property
+    introJohn.age = 27;                          // Update property
+    console.log("Updated Age:", introJohn.age);
+
+    // -------------------------------
+    // Example 2: Object with Nested Object and Methods
+    // -------------------------------
+    const product = {
+      name: "Shirt",
+      "father-name": "John",   // property with hyphen → must use bracket notation
+      ratings: {
+        stars: 4.5,
+        count: 87
+      },
+      // Method 1
+      fun: function () {
+        console.log("Function inside object executed.");
+      },
+      // Method 2
+      checking: function () {
+        console.log("Nested function inside object executed.");
+      }
+    };
+
+    console.log("Product:", product.name);
+    console.log("Ratings Count:", product.ratings.count);
+    product.fun();       // Call method
+    product.checking();  // Call another method
+    console.log("Father Name:", product["father-name"]); // Bracket notation
+
+    // -------------------------------
+    // Example 3: JSON Conversion
+    // -------------------------------
+    const jsonString = JSON.stringify(product);   // Convert object to JSON string
+    console.log("JSON String:", jsonString);
+
+    const parsedObject = JSON.parse(jsonString); // Convert back to object
+    console.log("Parsed Object:", parsedObject);
+
+    // -------------------------------
+    // Example 4: Iterating through Object
+    // -------------------------------
+    const student = {
+      name: "John",
+      age: 20,
+      city: "Malaysia",
+      country: "Pakistan"
+    };
+
+    console.log("Student Object:");
+    for (let key in student) {
+      document.write(key + " : " + student[key] + "<br>");
+    }
+
+    // -------------------------------
+    // Example 5: Number Conversion
+    // -------------------------------
+    let str1 = "40";
+    let num1 = Number(str1);       // Convert string to number
+    document.write("<br>40 + 90 = " + (num1 + 90));
+
+    let str2 = "32.34";
+    let num2 = parseFloat(str2);  // Convert string to floating number
+    document.write("<br>Parsed Float: " + num2);
+
+    // -------------------------------
+    // Example 6: Object Reference Behavior
+    // -------------------------------
+    const object1 = { message: "Hello" };
+    const object2 = object1;       // Both point to same reference
+    object1.message = "Hello 2 U!";
+
+    console.log("Object1:", object1);
+    console.log("Object2:", object2); // Also updated
+  </script>
+</head>
+<body>
+  <h2>Open the Console (F12 → Console Tab) to See Output</h2>
+</body>
+</html>
