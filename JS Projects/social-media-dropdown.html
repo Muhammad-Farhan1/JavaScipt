@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media Dropdown</title>
+
+  <!-- Font Awesome Icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  />
+
+  <style>
+    /* ====== Global Styles ====== */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, purple 20%, orange 80%);
+    }
+
+    /* ====== Menu Bar ====== */
+    .menu {
+      background: lightgray;
+      width: 300px;
+      padding: 10px;
+      border-radius: 5px;
+      opacity: 0.3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu p {
+      margin: 0 10px;
+    }
+
+    /* Icon animation */
+    .menu .fas {
+      transition: transform 0.2s;
+    }
+
+    /* ====== Social Media List ====== */
+    .social-lists {
+      width: 300px;
+      list-style: none;
+      background-color: lightgray;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 5px;
+      opacity: 0.3;
+      display: none; /* Initially hidden */
+      transition: padding 0.2s linear;
+    }
+
+    .social-lists li {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      transition: background-color 0.2s, padding-left 0.2s;
+    }
+
+    /* Hover effect */
+    .social-lists li:hover {
+      background-color: darkgray;
+      padding-left: 10px;
+    }
+
+    /* Icon spacing */
+    .social-lists li .fab {
+      margin: 0 10px;
+    }
+
+    /* ====== Active States ====== */
+    .rotate {
+      transform: rotate(180deg); /* Rotate dropdown arrow */
+    }
+
+    .show {
+      display: block; /* Show the list */
+    }
+  </style>
+</head>
+<body>
+  <!-- Dropdown Menu -->
+  <div class="menu">
+    <p>Social Media</p>
+    <i class="fas fa-angle-down"></i>
+  </div>
+
+  <!-- Social Media Options -->
+  <ul class="social-lists">
+    <li>
+      <i class="fab fa-facebook" style="color: blue"></i>
+      <p>Facebook</p>
+    </li>
+    <li>
+      <i class="fab fa-youtube" style="color: red"></i>
+      <p>YouTube</p>
+    </li>
+    <li>
+      <i class="fab fa-twitter" style="color: skyblue"></i>
+      <p>Twitter</p>
+    </li>
+    <li>
+      <i class="fab fa-linkedin" style="color: #0A66C2"></i>
+      <p>LinkedIn</p>
+    </li>
+  </ul>
+
+  <script>
+    // ====== Dropdown Toggle Logic ======
+    const menuEl = document.querySelector(".menu");
+    const socialListEl = document.querySelector(".social-lists");
+    const arrowIcon = document.querySelector(".menu .fas");
+
+    // Toggle dropdown on menu click
+    menuEl.addEventListener("click", () => {
+      socialListEl.classList.toggle("show");
+      arrowIcon.classList.toggle("rotate");
+    });
+  </script>
+</body>
+</html>
