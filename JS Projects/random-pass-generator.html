@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Password Generator</title>
+
+  <!-- Font Awesome (for copy icon) -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  />
+
+  <style>
+    /* ==== General Page Styling ==== */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background: #f5f5f5;
+    }
+
+    /* ==== Password Container Box ==== */
+    .password-container {
+      background-color: pink;
+      width: 500px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    /* ==== Input Field with Copy Icon ==== */
+    .input-container {
+      border: 2px solid black;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 24px;
+      letter-spacing: 4px;
+      flex: 1;
+    }
+
+    input::placeholder {
+      letter-spacing: 0;
+    }
+
+    .fa-copy {
+      cursor: pointer;
+      opacity: 0.3;
+      transition: opacity 0.2s;
+    }
+
+    .fa-copy:hover {
+      opacity: 0.7;
+    }
+
+    /* ==== Button Styling ==== */
+    .btn {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: green;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ==== Copy Alert Box ==== */
+    .alert-container {
+      position: fixed;
+      width: 300px;
+      height: 50px;
+      background-color: lightgreen;
+      right: 20px;
+      bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    /* Hidden by default */
+    .alert-container.active {
+      right: -350px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Generator Container -->
+  <div class="password-container">
+    <h2>Random Password Generator</h2>
+
+    <!-- Input field + Copy button -->
+    <div class="input-container">
+      <input type="text" id="input" class="input" placeholder="Create password" readonly>
+      <i class="far fa-copy fa-2x copy-icon"></i>
+    </div>
+
+    <!-- Generate Button -->
+    <button class="btn">Generate</button>
+  </div>
+
+  <!-- Copy Alert -->
+  <div class="alert-container active"></div>
+
+  <script>
+    // ==== DOM Elements ====
+    const btnEl = document.querySelector('.btn');
+    const inputEl = document.querySelector('#input');
+    const copyIcon = document.querySelector('.copy-icon');
+    const alertContainerEl = document.querySelector('.alert-container');
+
+    // ==== Event Listeners ====
+    // Generate new password
+    btnEl.addEventListener('click', createPassword);
+
+    // Copy password
+    copyIcon.addEventListener('click', () => {
+      copyPassword();
+      if (inputEl.value) {
+        // Show alert box
+        alertContainerEl.classList.remove("active");
+        setTimeout(() => {
+          alertContainerEl.classList.add("active");
+        }, 2000);
+      }
+    });
+
+    // ==== Generate Random Password ====
+    function createPassword() {
+      const chars = 
+        "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+?{}[]:_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const passwordLength = 14;
+      let password = "";
+
+      for (let i = 0; i < passwordLength; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        password += chars[randomIndex];
+      }
+
+      inputEl.value = password;
+      alertContainerEl.innerText = password + " copied";
+    }
+
+    // ==== Copy Password to Clipboard ====
+    function copyPassword() {
+      inputEl.select();
+      inputEl.setSelectionRange(0, 9999); // For mobile devices
+      navigator.clipboard.writeText(inputEl.value);
+    }
+  </script>
+</body>
+</html>
