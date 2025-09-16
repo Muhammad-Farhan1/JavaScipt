@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Rating</title>
+
+    <!-- Font Awesome for emojis and stars -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <style>
+        /* Center content on page */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: yellow;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main feedback box */
+        .feedback-container {
+            background-color: #fff;
+            width: 400px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,.3);
+            position: relative;
+        }
+
+        /* Emoji display area */
+        .emoji-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Emojis themselves */
+        .far {
+            margin: 1px;
+            transform: translateX(0);
+            transition: transform 0.3s;
+        }
+
+        /* Star rating section */
+        .rating-container {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Default star color */
+        .fa-star {
+            color: lightgray;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        /* Active (highlighted) stars */
+        .fa-star.active {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        
+        <!-- Emoji face reactions -->
+        <div class="emoji-container">
+            <i class="far fa-angry fa-3x"></i>
+            <i class="far fa-frown fa-3x"></i>
+            <i class="far fa-meh fa-3x"></i>
+            <i class="far fa-smile fa-3x"></i>
+            <i class="far fa-laugh fa-3x"></i>
+        </div>
+
+        <!-- Star rating -->
+        <div class="rating-container">
+            <i class="fas fa-star fa-2x active"></i>
+            <i class="fas fa-star fa-2x"></i>
+            <i class="fas fa-star fa-2x"></i>
+            <i class="fas fa-star fa-2x"></i>
+            <i class="fas fa-star fa-2x"></i>
+        </div>
+    </div>
+
+    <script>
+        // Select stars and emojis
+        const stars = document.querySelectorAll('.fa-star');
+        const emojis = document.querySelectorAll('.far');
+
+        // Colors for emojis based on rating
+        const colors = ['red', 'orange', 'lightblue', 'lightgreen', 'green'];
+
+        // Initialize with first rating
+        updateRating(0);
+
+        // Add click event to each star
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                updateRating(index);
+            });
+        });
+
+        /**
+         * Update UI based on selected rating
+         * @param {number} index - selected star index
+         */
+        function updateRating(index) {
+            // Highlight stars up to clicked one
+            stars.forEach((star, idx) => {
+                star.classList.toggle('active', idx <= index);
+            });
+
+            // Move and recolor emoji based on rating
+            emojis.forEach((emoji) => {
+                emoji.style.transform = `translateX(-${index * 50}px)`;
+                emoji.style.color = colors[index];
+            });
+        }
+    </script>
+</body>
+</html>
