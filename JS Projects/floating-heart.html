@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Floating Hearts</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      background: url("https://cdn2.iconfinder.com/data/icons/casino-gambling-and-card-games/120/1b-512.png")
+        no-repeat center/cover;
+      animation: floatUp 6s linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -5000%);
+        opacity: 0;
+        filter: hue-rotate(11730deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const bodyEl = document.body;
+
+    bodyEl.addEventListener("mousemove", (e) => {
+      const heart = document.createElement("span");
+      heart.classList.add("heart");
+
+      // Position where the mouse is
+      heart.style.left = `${e.pageX}px`;
+      heart.style.top = `${e.pageY}px`;
+
+      // Random size for variation
+      const size = Math.random() * 80 + 20; 
+      heart.style.width = `${size}px`;
+      heart.style.height = `${size}px`;
+
+      bodyEl.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 3000);
+    });
+  </script>
+</body>
+</html>
